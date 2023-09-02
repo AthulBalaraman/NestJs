@@ -1,10 +1,26 @@
+import { IsOptional, IsString, IsNumber, IsEnum} from "class-validator"
 import { Category } from "../schemas/book.schema"
 
 
 export class UpdateBookDto{
+
+  @IsOptional()
+  @IsString()
   readonly title:string
+
+  @IsOptional()
+  @IsString()
   readonly description:string
+
+  @IsOptional()
+  @IsNumber()
   readonly price :number
+
+  @IsOptional()
+  @IsString()
   readonly author : string
+
+  @IsOptional()
+  @IsEnum(Category,{message:"Please enter the correct category"})
   readonly category : Category
 }
